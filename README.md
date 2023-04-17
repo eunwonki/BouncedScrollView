@@ -13,6 +13,8 @@ Then how to implement `unbounced scroll view`.
 This is how I try.   
 
 
+### first solution
+
 ```swift
 struct UnbouncedScrollView: View {
     @Environment(\.dismiss) var dismiss
@@ -31,6 +33,7 @@ struct UnbouncedScrollView: View {
         .onAppear {
             UIScrollView.appearance().bounces = false
         }
+
         .onDisappear {
             // UIScrollView.appearance is global setting...
             UIScrollView.appearance().bounces = true
@@ -38,6 +41,13 @@ struct UnbouncedScrollView: View {
      }
 }
 ```
+
+### second solution
+
+scroll inspector
+
+
+### after ios 16.4
 
 After ios 16.4 `.scrollBounceBehavior(.basedOnSize)` is possible.
 But almost developers are hard to set minimum to 16.4 now...
@@ -48,7 +58,6 @@ ScrollView {
 }
 .scrollBounceBehavior(.basedOnSize)
 ```
-
 
 ### Source
 - [StackOverflow](https://stackoverflow.com/questions/58799474/how-to-disable-scrollview-bounce-in-swiftui)
